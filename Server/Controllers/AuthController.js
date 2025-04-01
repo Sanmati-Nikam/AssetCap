@@ -1,15 +1,17 @@
 const User = require("../Models/UserModel");
 const { createSecretToken } = require("../util/SecretToken");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 module.exports.Signup = async (req, res, next) => {
+    console.log("Request received at /signup:", req.body); // Debug log
     try {
-        const { email, password, username, createAt } = req.body;
+        const { email, password, username } = req.body;
+        console.log("her",req.body);
         const existingUser = await User.findOne({ email });
         if (existingUser) {
             return res.json({ message: "User already exists"});
         }
-        const user = await User.create({ email, password, username, createdAt });
+        const user = await User.create({ email, password, username });
         const token = createSecretToken(user._id);
         res.cookie("token", token, {
             withCredentials: true,
