@@ -12,7 +12,7 @@ const app = express();
 
 // Enable CORS
 app.use(cors({
-    origin: ["http://localhost:5000"],
+    origin: ["http://localhost:3000"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
 }));
@@ -28,7 +28,7 @@ mongoose.connect(MONGO_URL, {})
 
 app.use("/", authRoute);
 
-app.get("/", (req, res) => {
+app.get("/check", (req, res) => {
     res.send("Server is working");
 });
 
