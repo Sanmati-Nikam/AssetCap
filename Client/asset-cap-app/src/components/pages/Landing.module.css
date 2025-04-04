@@ -1,0 +1,95 @@
+.headline1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 40px;
+    margin-bottom: -2rem;
+    margin-top: 3.5rem;
+}
+
+/* styles.module.css */
+.headline2 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 40px;
+    /* Now works because all weights are loaded */
+}
+
+.subheadline {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.subheadlineCardContanier {
+    display: flex;
+    margin-left: 10rem;
+}
+
+.subheadlineCard {
+    display: flex;
+    position: relative;
+    width: fit-content;
+    margin-right: -2.5rem;
+    margin-top: 6rem;
+}
+
+.subheadlineCard1 {
+    background-color: #34a8f3;
+    border-radius: 10%;
+    height: 12rem;
+    width: 20rem;
+}
+
+.subheadlineCard1Img {
+    z-index: 2;
+    background-color: white;
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+    border: 0.2rem solid #34a8f3;
+    transform: translate(235%, -50%);
+    background-image: url("../../assets/bull.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.subheadlineCard2Img {
+    z-index: 2;
+    background-color: white;
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+    border: 0.2rem solid #34a8f3;
+    transform: translate(235%, -50%);
+    background-image: url("../../assets/bitcoin.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.subheadlineCard3Img {
+    z-index: 2;
+    background-color: white;
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+    border: 0.2rem solid #34a8f3;
+    transform: translate(235%, -50%);
+    background-image: url("../../assets/gold.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.subheadlineCard1Text {
+    margin-top: 5rem;
+    color: white;
+    font-size: 1.4rem;
+}
+
+.subheadlineCard3Text {
+    margin-top: -1.3rem;
+    color: white;
+    font-size: 1.4rem;
+}

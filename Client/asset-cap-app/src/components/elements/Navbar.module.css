@@ -1,0 +1,102 @@
+/* Main Container */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background: white;
+    /* border-bottom: 1px solid #e5e7eb; */
+}
+/* Logo */
+.logoContainer {
+    position: relative;
+    /* Required for absolute positioning */
+    width: fit-content;
+    /* Container shrinks to content */
+    margin-right: 195px;
+    margin-left: 40px;
+}
+
+.logoImage {
+    width: 85px;
+    /* Adjust as needed */
+    height: auto;
+    /* Maintain aspect ratio */
+    display: block;
+    /* Remove inline spacing */
+}
+
+.logoText {
+    position: absolute;
+    top: -18%;
+    /* Center vertically */
+    left: 158%;
+    /* Center horizontally */
+    transform: translate(-50%, -50%);
+    /* Perfect centering */
+
+    font-family: 'Roboto', sans-serif;
+    color: black;
+    /* Text color */
+    /* font-weight: bold; */
+    font-size: 32px;
+    /* text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); */
+    /* Better readability */
+    z-index: 2;
+    /* Ensure text stays above image */
+}
+
+/* Navigation Links */
+.navLinks {
+    display: flex;
+    gap: 2.5rem;
+}
+
+.navLink {
+    font-family: 'Roboto', sans-serif;
+    color: black;
+    font-size: 18px;
+    font-weight: 400;
+    /* font-weight: 500; */
+    text-decoration: none;
+}
+
+.navLink:hover {
+    color: #34a8f3;
+}
+
+/* Buttons */
+.authButtons {
+    display: flex;
+    gap: 0.2rem;
+}
+
+.loginButton {
+    font-family: 'Roboto', sans-serif;
+    padding: 0.5rem 1rem;
+    background: none;
+    border: none;
+    color: #34a8f3;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.loginButton:hover {
+    color: black;
+}
+
+.registerButton {
+    font-family: 'Roboto', sans-serif;
+    padding: 1rem 1.2rem;
+    background: #34a8f3;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.registerButton:hover {
+    background: white;
+    color: #34a8f3;
+}
