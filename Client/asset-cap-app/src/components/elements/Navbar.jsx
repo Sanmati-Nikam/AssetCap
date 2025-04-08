@@ -1,86 +1,33 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
-import styles from './Navbar.module.css'; // Make sure to import your styles
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext'; // Adjust path as needed
+import styles from './Navbar.module.css';
 
 const Navbar = () => {
     const navigate = useNavigate();
-    const [authState, setAuthState] = useState({
-        isAuthenticated: false,
-        username: '',
-        loading: true
-    });
+    const { authState, logout } = useAuth();
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const verifyUser = async () => {
-            try {
-                // Make sure to include credentials for cookies
-                const { data } = await axios.post(
-                    "http://localhost:8000/user-verification",
-                    {},
-                    { withCredentials: true }
-                );
+        // Set loading to false once authState is initialized
+        if (!authState.loading) {
+            setLoading(false);
+        }
+    }, [authState.loading]);
 
-                if (data.status) {
-                    setAuthState({
-                        isAuthenticated: true,
-                        username: data.user,
-                        loading: false
-                    });
-                } else {
-                    setAuthState({
-                        isAuthenticated: false,
-                        username: '',
-                        loading: false
-                    });
-                }
-            } catch (error) {
-                console.error("Verification error:", error);
-                setAuthState({
-                    isAuthenticated: false,
-                    username: '',
-                    loading: false
-                });
-            }
-        };
-
-        verifyUser();
-    }, []);
-
-    const handleLoginClick = (()=> {
-        navigate("/login");
-    })
-
-    const handleSignupClick = (() => {
-        navigate("/signup");
-    })
+    const handleLoginClick = () => navigate("/login");
+    const handleSignupClick = () => navigate("/signup");
 
     const handleLogout = async () => {
-        console.log("yes")
         try {
-            const { data } = await axios.post(
-                "http://localhost:8000/signout",
-                {},
-                { withCredentials: true }
-            );
-
-            if (data.message === "User signed out successfully") {
-                setAuthState({
-                    isAuthenticated: false,
-                    username: '',
-                    loading: false
-                });
-
-                // Optional: Redirect to home page
-                window.location.href = "/";
-            }
+            await logout();
+            navigate("/");
         } catch (error) {
             console.error("Logout error:", error);
         }
     };
 
-
-    if (authState.loading) {
+    if (loading) {
         return (
             <nav className={styles.navbar}>
                 <div>Loading...</div>
