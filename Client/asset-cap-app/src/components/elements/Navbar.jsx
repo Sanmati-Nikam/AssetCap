@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
-import styles from './Navbar.module.css'; // Make sure to import your styles
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
+import styles from './Navbar.module.css';
 
 const Navbar = () => {
     
@@ -13,13 +12,8 @@ const Navbar = () => {
         return <div>Loading authentication...</div>;
     }
 
-    const handleLoginClick = (()=> {
-        navigate("/login");
-    })
-
-    const handleSignupClick = (() => {
-        navigate("/signup");
-    })
+    const handleLoginClick = () => navigate("/login");
+    const handleSignupClick = () => navigate("/signup");
 
 
     if (authState.loading) {
