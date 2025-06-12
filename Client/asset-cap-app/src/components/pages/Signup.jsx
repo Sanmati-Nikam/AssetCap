@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import { useAuth } from "../../context/AuthContext"; // Import useAuth
+
 
 const Signup = () => {
     const navigate = useNavigate();
+    const { verifyUser } = useAuth(); // Get verifyUser from context
     const [inputValue, setInputValue] = useState({
         email: "",
         password: "",
@@ -33,14 +36,17 @@ const Signup = () => {
         try {
             const { data } = await axios.post(
                 "http://localhost:8000/signup",
-                {
-                    ...inputValue,
-                },
+                { ...inputValue },
                 { withCredentials: true }
             );
+
             const { success, message } = data;
             if (success) {
                 handleSuccess(message);
+
+                // Verify user immediately after successful registration
+                await verifyUser();
+
                 setTimeout(() => {
                     navigate("/home");
                 }, 1000);
@@ -51,12 +57,12 @@ const Signup = () => {
             console.log(error);
         }
         setInputValue({
-            ...inputValue,
             email: "",
             password: "",
             username: "",
         });
     };
+
 
     return (
         <div className="container">

@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import { useAuth } from "../../context/AuthContext";
 
 const Login = () => {
+    const {login} = useAuth();
     const navigate = useNavigate();
     const [inputValue, setInputValue] = useState({
         email: "",
@@ -30,23 +32,12 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const { data } = await axios.post(
-                "http://localhost:8000/login",
-                { ...inputValue },
-                {
-                    withCredentials: true,
-                    headers: {
-                        'Content-Type': 'application/json',
-                    }
-                }
-            );
-            console.log(data);
-            const { success, message } = data;
+            console.log(inputValue)
+            const { success, message } = await login(inputValue);
+            console.log("succ: ", success)
             if (success) {
                 handleSuccess(message);
-                setTimeout(() => {
-                    navigate("/home");
-                }, 1000);
+                navigate("/home");
             } else {
                 handleError(message);
             }
