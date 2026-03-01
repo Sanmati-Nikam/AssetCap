@@ -3,6 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "./Login.css";
+
+// asset imports
+import orArrow from "../../assets/orArrow.png";
+import lockIcon from "../../assets/lock.png";
 
 const Login = () => {
     const {login} = useAuth();
@@ -67,13 +72,15 @@ const Login = () => {
             <div className="middleBox">
                 <p className="middleText">Or else</p>
                 <img
-                    src="../../assets/orArrow.png"
+                    className="arrow"
+                    src={orArrow}
                     alt="fill up your credentials"
                 />
             </div>
             <div className="form_container">
                 <img
-                    src="../../assets/lock.png"
+                    className="lock"
+                    src={lockIcon}
                     alt="protected"
                 />
                 <p>Secure Sign in</p>

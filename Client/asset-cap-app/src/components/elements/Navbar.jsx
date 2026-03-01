@@ -33,7 +33,11 @@ const Navbar = () => {
                     alt="AssetCap Logo"
                     className={styles.logoImage}
                 />
-                <p className={styles.logoText}>AssetCap</p>
+                <p className={styles.logoText}>
+                    <a href='/'>
+                        AssetCap
+                    </a> 
+                </p>
             </div>
 
             {/* Navigation Links */}
